@@ -1,9 +1,17 @@
 import { styled } from "styled-components";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { types } from "../types";
+import schema from "./schema";
 
 const Form = (): JSX.Element => {
-  const { register, handleSubmit } = useForm<types>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<types>({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = (data: types) => {
     console.log(data);
@@ -15,8 +23,10 @@ const Form = (): JSX.Element => {
           <input
             type="text"
             placeholder="First Name"
-            {...register("fullName")}
+            {...register("firstName")}
           />
+
+          <p>{errors.firstName?.message}</p>
         </label>
 
         <label>
@@ -25,6 +35,7 @@ const Form = (): JSX.Element => {
             placeholder="Last Name"
             {...register("lastName")}
           />
+          <p>{errors.lastName?.message}</p>
         </label>
 
         <label>
@@ -33,10 +44,12 @@ const Form = (): JSX.Element => {
             placeholder="Email Addres"
             {...register("email")}
           />
+          <p>{errors.email?.message}</p>
         </label>
 
         <label>
           <input type="text" placeholder="Password" {...register("password")} />
+          <p>{errors.password?.message}</p>
         </label>
 
         <button type="submit">CLAIM YOUR FREE TRIAL</button>
@@ -68,6 +81,18 @@ const FormContainer = styled.div`
 
   label {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    p {
+      color: #ff7979;
+      font-size: 11px;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 17px;
+      text-align: right;
+    }
   }
 
   input {
