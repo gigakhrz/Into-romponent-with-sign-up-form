@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { types } from "../types";
 import schema from "./schema";
+import img from "../assets/icon-error.svg";
 
 const Form = (): JSX.Element => {
   const {
@@ -16,7 +17,7 @@ const Form = (): JSX.Element => {
   const onSubmit = (data: types) => {
     console.log(data);
   };
-  console.log(errors);
+
   return (
     <FormContainer error={errors}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -27,7 +28,7 @@ const Form = (): JSX.Element => {
             {...register("firstName")}
             className="first"
           />
-
+          <img className="firstImg" src={img} alt="error icon" />
           <p>{errors.firstName?.message}</p>
         </label>
 
@@ -38,6 +39,7 @@ const Form = (): JSX.Element => {
             {...register("lastName")}
             className="last"
           />
+          <img className="lastImg" src={img} alt="error icon" />
           <p>{errors.lastName?.message}</p>
         </label>
 
@@ -48,6 +50,7 @@ const Form = (): JSX.Element => {
             {...register("email")}
             className="email"
           />
+          <img className="emailImg" src={img} alt="error icon" />
           <p>{errors.email?.message}</p>
         </label>
 
@@ -58,6 +61,7 @@ const Form = (): JSX.Element => {
             {...register("password")}
             className="password"
           />
+          <img className="passwordImg" src={img} alt="error icon" />
           <p>{errors.password?.message}</p>
         </label>
 
@@ -93,6 +97,7 @@ const FormContainer = styled.div<{ error: any }>`
     display: flex;
     flex-direction: column;
     gap: 6px;
+    position: relative;
 
     p {
       color: #ff7979;
@@ -102,6 +107,28 @@ const FormContainer = styled.div<{ error: any }>`
       line-height: 17px;
       text-align: right;
     }
+
+    .firstImg {
+      display: ${(props) => (props.error.firstName ? "block" : "none")};
+    }
+
+    .lastImg {
+      display: ${(props) => (props.error.lastName ? "block" : "none")};
+    }
+
+    .emailImg {
+      display: ${(props) => (props.error.email ? "block" : "none")};
+    }
+
+    .passwordImg {
+      display: ${(props) => (props.error.password ? "block" : "none")};
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 15px;
+    right: 10px;
   }
 
   input {
