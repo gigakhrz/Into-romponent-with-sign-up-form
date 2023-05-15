@@ -208,6 +208,7 @@ const FormContainer = styled.div<{ error: any }>`
     cursor: pointer;
 
     :hover {
+      background: #77e2b3;
       box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.0908818);
     }
   }
