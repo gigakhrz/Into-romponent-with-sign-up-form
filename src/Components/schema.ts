@@ -7,9 +7,12 @@ const schema = yup.object().shape({
     .matches(/^[a-zA-Z\s]*$/, "The name must contain only Latin letters"),
   lastName: yup
     .string()
-    .required()
+    .required("First Name cannot be empty")
     .matches(/^[a-zA-Z\s]*$/, "The name must contain only Latin letters"),
-  email: yup.string().email().required(),
+  email: yup
+    .string()
+    .email("Looks like this is not an email")
+    .required("Email cannot be empty"),
   password: yup
     .string()
     .min(8)
