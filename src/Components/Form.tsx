@@ -16,14 +16,16 @@ const Form = (): JSX.Element => {
   const onSubmit = (data: types) => {
     console.log(data);
   };
+  console.log(errors);
   return (
-    <FormContainer>
+    <FormContainer error={errors}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
           <input
             type="text"
             placeholder="First Name"
             {...register("firstName")}
+            className="first"
           />
 
           <p>{errors.firstName?.message}</p>
@@ -34,6 +36,7 @@ const Form = (): JSX.Element => {
             type="text"
             placeholder="Last Name"
             {...register("lastName")}
+            className="last"
           />
           <p>{errors.lastName?.message}</p>
         </label>
@@ -43,12 +46,18 @@ const Form = (): JSX.Element => {
             type="text"
             placeholder="Email Addres"
             {...register("email")}
+            className="email"
           />
           <p>{errors.email?.message}</p>
         </label>
 
         <label>
-          <input type="text" placeholder="Password" {...register("password")} />
+          <input
+            type="text"
+            placeholder="Password"
+            {...register("password")}
+            className="password"
+          />
           <p>{errors.password?.message}</p>
         </label>
 
@@ -60,7 +69,7 @@ const Form = (): JSX.Element => {
 
 export default Form;
 
-const FormContainer = styled.div`
+const FormContainer = styled.div<{ error: any }>`
   width: 100%;
   padding: 24px;
   display: flex;
@@ -107,10 +116,29 @@ const FormContainer = styled.div`
     line-height: 26px;
     letter-spacing: 0.25px;
     font-weight: 600;
-
     :focus {
       outline: none;
     }
+  }
+
+  .first {
+    border: ${(props) =>
+      props.error.firstName ? "2px solid #FF7979" : "1px solid #dedede"};
+  }
+
+  .last {
+    border: ${(props) =>
+      props.error.lastName ? "2px solid #FF7979" : "1px solid #dedede"};
+  }
+
+  .email {
+    border: ${(props) =>
+      props.error.email ? "2px solid #FF7979" : "1px solid #dedede"};
+  }
+
+  .password {
+    border: ${(props) =>
+      props.error.password ? "2px solid #FF7979" : "1px solid #dedede"};
   }
 
   button {
