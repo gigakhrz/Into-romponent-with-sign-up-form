@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 import { useForm } from "react-hook-form";
 import { types } from "../types";
-import * as yup from "yup";
 
 const Form = (): JSX.Element => {
   const { register, handleSubmit } = useForm<types>();
