@@ -3,6 +3,7 @@ import GlobalStyles from "./GlobalStyles";
 import bgMobile from "./assets/bg-intro-mobile.png";
 import Description from "./Components/Description";
 import Form from "./Components/Form";
+import bgDesktop from "./assets/bg-intro-desktop.png";
 
 function App() {
   return (
@@ -29,4 +30,9 @@ const Container = styled.div`
   background-image: url(${bgMobile});
   background-repeat: no-repeat;
   background-size: 100% 100vh;
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    background-image: url(${bgDesktop});
+    gap: 45px;
+  }
 `;

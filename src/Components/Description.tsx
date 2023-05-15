@@ -22,6 +22,7 @@ const DescriptionContainer = styled.div`
   gap: 16px;
   align-items: center;
   justify-content: center;
+  max-width: 525px;
 
   h1 {
     font-size: 28px;
@@ -30,6 +31,13 @@ const DescriptionContainer = styled.div`
     letter-spacing: -0.29px;
     color: white;
     text-align: center;
+    @media screen and (min-width: 1024px) {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 55px;
+      letter-spacing: -0.52px;
+      text-align: left;
+    }
   }
 
   p {
@@ -38,5 +46,8 @@ const DescriptionContainer = styled.div`
     line-height: 26px;
     color: white;
     text-align: center;
+    @media screen and (min-width: 1024px) {
+      text-align: left;
+    }
   }
 `;

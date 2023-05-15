@@ -104,6 +104,10 @@ const FormContainer = styled.div<{ error: any }>`
   box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.14688);
   border-radius: 10px;
 
+  @media screen and (min-width: 1024px) {
+    padding: 40px;
+  }
+
   form {
     width: 100%;
     display: flex;
