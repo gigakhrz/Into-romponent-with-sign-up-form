@@ -205,12 +205,11 @@ const FormContainer = styled.div<{ error: any }>`
     font-size: 15px;
     font-weight: 600;
     line-height: 26px;
+  }
+  button:hover {
     cursor: pointer;
-
-    :hover {
-      background: #77e2b3;
-      box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.0908818);
-    }
+    background: #77e2b3;
+    box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.0908818);
   }
 
   .agree {
