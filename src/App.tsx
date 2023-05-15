@@ -2,12 +2,14 @@ import { styled } from "styled-components";
 import GlobalStyles from "./GlobalStyles";
 import bgMobile from "./assets/bg-intro-mobile.png";
 import Description from "./Components/Description";
+import Form from "./Components/Form";
 
 function App() {
   return (
     <Container>
       <GlobalStyles />
       <Description />
+      <Form />
     </Container>
   );
 }
