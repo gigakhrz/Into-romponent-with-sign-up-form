@@ -1,23 +1,43 @@
 import { styled } from "styled-components";
 import { useForm } from "react-hook-form";
+import { types } from "../types";
+import * as yup from "yup";
+
 const Form = (): JSX.Element => {
+  const { register, handleSubmit } = useForm<types>();
+
+  const onSubmit = (data: types) => {
+    console.log(data);
+  };
   return (
     <FormContainer>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label>
-          <input type="text" placeholder="First Name" />
+          <input
+            type="text"
+            placeholder="First Name"
+            {...register("fullName")}
+          />
         </label>
 
         <label>
-          <input type="text" placeholder="Last Name" />
+          <input
+            type="text"
+            placeholder="Last Name"
+            {...register("lastName")}
+          />
         </label>
 
         <label>
-          <input type="text" placeholder="Email Addres" />
+          <input
+            type="text"
+            placeholder="Email Addres"
+            {...register("email")}
+          />
         </label>
 
         <label>
-          <input type="text" placeholder="Password" />
+          <input type="text" placeholder="Password" {...register("password")} />
         </label>
 
         <button type="submit">CLAIM YOUR FREE TRIAL</button>
