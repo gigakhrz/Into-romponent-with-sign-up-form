@@ -19,59 +19,79 @@ const Form = (): JSX.Element => {
   };
 
   return (
-    <FormContainer error={errors}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          <input
-            type="text"
-            placeholder="First Name"
-            {...register("firstName")}
-            className="first"
-          />
-          <img className="firstImg" src={img} alt="error icon" />
-          <p>{errors.firstName?.message}</p>
-        </label>
+    <Container>
+      <BuyIt>
+        <p>
+          Try it free 7 days <span>then $20/mo. thereafter </span>
+        </p>
+      </BuyIt>
+      <FormContainer error={errors}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <label>
+            <input
+              type="text"
+              placeholder="First Name"
+              {...register("firstName")}
+              className="first"
+            />
+            <img className="firstImg" src={img} alt="error icon" />
+            <p>{errors.firstName?.message}</p>
+          </label>
 
-        <label>
-          <input
-            type="text"
-            placeholder="Last Name"
-            {...register("lastName")}
-            className="last"
-          />
-          <img className="lastImg" src={img} alt="error icon" />
-          <p>{errors.lastName?.message}</p>
-        </label>
+          <label>
+            <input
+              type="text"
+              placeholder="Last Name"
+              {...register("lastName")}
+              className="last"
+            />
+            <img className="lastImg" src={img} alt="error icon" />
+            <p>{errors.lastName?.message}</p>
+          </label>
 
-        <label>
-          <input
-            type="text"
-            placeholder="Email Addres"
-            {...register("email")}
-            className="email"
-          />
-          <img className="emailImg" src={img} alt="error icon" />
-          <p>{errors.email?.message}</p>
-        </label>
+          <label>
+            <input
+              type="text"
+              placeholder="Email Addres"
+              {...register("email")}
+              className="email"
+            />
+            <img className="emailImg" src={img} alt="error icon" />
+            <p>{errors.email?.message}</p>
+          </label>
 
-        <label>
-          <input
-            type="text"
-            placeholder="Password"
-            {...register("password")}
-            className="password"
-          />
-          <img className="passwordImg" src={img} alt="error icon" />
-          <p>{errors.password?.message}</p>
-        </label>
+          <label>
+            <input
+              type="text"
+              placeholder="Password"
+              {...register("password")}
+              className="password"
+            />
+            <img className="passwordImg" src={img} alt="error icon" />
+            <p>{errors.password?.message}</p>
+          </label>
 
-        <button type="submit">CLAIM YOUR FREE TRIAL</button>
-      </form>
-    </FormContainer>
+          <button type="submit">CLAIM YOUR FREE TRIAL</button>
+        </form>
+
+        <p className="agree">
+          By clicking the button, you are agreeing to our
+          <span>Terms and Services</span>
+        </p>
+      </FormContainer>
+    </Container>
   );
 };
 
 export default Form;
+
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 540px;
+`;
 
 const FormContainer = styled.div<{ error: any }>`
   width: 100%;
@@ -181,5 +201,56 @@ const FormContainer = styled.div<{ error: any }>`
     font-size: 15px;
     font-weight: 600;
     line-height: 26px;
+  }
+
+  .agree {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #bab7d4;
+    font-style: normal;
+    width: 249px;
+    @media (min-width: 1024px) {
+      line-height: 26px;
+      width: 100%;
+    }
+
+    span {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 21px;
+      letter-spacing: 0px;
+      text-align: center;
+      color: #ff7979;
+    }
+  }
+`;
+
+const BuyIt = styled.div`
+  width: 100%;
+  padding: 18px 67px;
+  background-color: #5e54a4;
+  border-radius: 10px;
+  box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.14688);
+  @media (min-width: 1024px) {
+    width: 540px;
+    padding: 17px 0;
+  }
+  p {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0.27px;
+    text-align: center;
+    color: #ffffff;
+
+    span {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 0.27px;
+    }
   }
 `;
